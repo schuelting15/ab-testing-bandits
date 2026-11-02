@@ -1,0 +1,313 @@
+i Running as script
+
+-- Starting Multi-Armed Bandit Analysis Pipeline -------------------------------
+
+-- Loading data for bandit analysis --
+
+v Loaded 59984 rows, 43 columns
+
+-- Calculating bandit performance metrics --
+
+v Bandit metrics calculated
+
+-- Performing statistical tests --
+
+v Statistical tests completed
+
+-- Simulating bandit algorithms --
+
+v Bandit algorithm simulation completed
+
+-- Creating bandit visualizations --
+
+v Bandit visualizations created and saved to plots/ directory
+
+-- Generating bandit analysis report --
+
+Generated: 2026-11-02 10:09:35.56824 
+
+v Bandit analysis report generated: results/reports/multi_armed_bandit_report.txt
+
+-- Multi-Armed Bandit Analysis Pipeline Completed Successfully -----------------
+v All bandit analysis components completed
+i Check plots/ directory for bandit visualizations
+i Check reports/ directory for bandit analysis report
+
+-- Bandit Analysis Pipeline Completed Successfully -----------------------------
+v Multi-armed bandit analysis completed
+Warning messages:
+1: In write.table(metrics$arm_metrics, file = report_file, append = TRUE,  :
+  appending column names to file
+2: In write.table(metrics$regret_analysis, file = report_file, append = TRUE,  :
+  appending column names to file
+$data
+# A tibble: 59,984 x 43
+   user_id session_id region operating_system recommendation_strategy
+     <dbl>      <dbl> <fct>  <fct>            <fct>                  
+ 1  110665          1 Berlin Android          price_first            
+ 2  101059          2 London Android          price_first            
+ 3  104018          3 London iOS              price_first            
+ 4  105865          4 Paris  iOS              price_first            
+ 5  112020          5 London Android          rating_first           
+ 6  113847          6 London Android          rating_first           
+ 7  114600          7 London Android          rating_first           
+ 8  100361          8 Paris  iOS              price_first            
+ 9  119423          9 London iOS              time_first             
+10  119596         10 Berlin iOS              time_first             
+# i 59,974 more rows
+# i 38 more variables: session_timestamp <chr>, weather_index <dbl>,
+#   event_peak <dbl>, city_density <dbl>, fare_estimate <dbl>,
+#   surge_multiplier <dbl>, wait_time_estimate_min <dbl>,
+#   driver_rating_shown <dbl>, options_viewed_count <dbl>,
+#   pct_offer_inspection <dbl>, promo_impressions <dbl>,
+#   app_errors_count <dbl>, ride_requested <dbl>, ride_completed <dbl>, ...
+
+$metrics
+$metrics$arm_metrics
+# A tibble: 3 x 19
+  recommendation_strategy n_trials n_requests n_completions request_rate
+  <fct>                      <int>      <dbl>         <dbl>        <dbl>
+1 price_first                20196       4522          4007        0.224
+2 rating_first               19756       4056          3625        0.205
+3 time_first                 20032       4155          3863        0.207
+# i 14 more variables: completion_rate <dbl>, total_revenue <dbl>,
+#   avg_revenue_per_trial <dbl>, avg_revenue_per_completion <dbl>,
+#   avg_wait_time_estimate <dbl>, avg_wait_time_actual <dbl>,
+#   avg_driver_rating <dbl>, surge_pricing_rate <dbl>,
+#   completion_rate_se <dbl>, completion_rate_ci_lower <dbl>,
+#   completion_rate_ci_upper <dbl>, request_rate_se <dbl>,
+#   request_rate_ci_lower <dbl>, request_rate_ci_upper <dbl>
+
+$metrics$overall_metrics
+# A tibble: 1 x 6
+  total_trials total_requests total_completions overall_request_rate
+         <int>          <dbl>             <dbl>                <dbl>
+1        59984          12733             11495                0.212
+# i 2 more variables: overall_completion_rate <dbl>, total_revenue <dbl>
+
+$metrics$best_arm
+# A tibble: 1 x 19
+  recommendation_strategy n_trials n_requests n_completions request_rate
+  <fct>                      <int>      <dbl>         <dbl>        <dbl>
+1 time_first                 20032       4155          3863        0.207
+# i 14 more variables: completion_rate <dbl>, total_revenue <dbl>,
+#   avg_revenue_per_trial <dbl>, avg_revenue_per_completion <dbl>,
+#   avg_wait_time_estimate <dbl>, avg_wait_time_actual <dbl>,
+#   avg_driver_rating <dbl>, surge_pricing_rate <dbl>,
+#   completion_rate_se <dbl>, completion_rate_ci_lower <dbl>,
+#   completion_rate_ci_upper <dbl>, request_rate_se <dbl>,
+#   request_rate_ci_lower <dbl>, request_rate_ci_upper <dbl>
+
+$metrics$regret_analysis
+# A tibble: 3 x 23
+  recommendation_strategy n_trials n_requests n_completions request_rate
+  <fct>                      <int>      <dbl>         <dbl>        <dbl>
+1 price_first                20196       4522          4007        0.224
+2 rating_first               19756       4056          3625        0.205
+3 time_first                 20032       4155          3863        0.207
+# i 18 more variables: completion_rate <dbl>, total_revenue <dbl>,
+#   avg_revenue_per_trial <dbl>, avg_revenue_per_completion <dbl>,
+#   avg_wait_time_estimate <dbl>, avg_wait_time_actual <dbl>,
+#   avg_driver_rating <dbl>, surge_pricing_rate <dbl>,
+#   completion_rate_se <dbl>, completion_rate_ci_lower <dbl>,
+#   completion_rate_ci_upper <dbl>, request_rate_se <dbl>,
+#   request_rate_ci_lower <dbl>, request_rate_ci_upper <dbl>, ...
+
+
+$statistical_tests
+$statistical_tests$chi_square_request
+
+	Pearson's Chi-squared test
+
+data:  contingency_table
+X-squared = 24.905, df = 2, p-value = 3.909e-06
+
+
+$statistical_tests$chi_square_completion
+
+	Pearson's Chi-squared test
+
+data:  completion_contingency
+X-squared = 52.454, df = 2, p-value = 4.071e-12
+
+
+$statistical_tests$fare_anova
+                           Df Sum Sq Mean Sq F value Pr(>F)    
+recommendation_strategy     2   6096  3048.0   267.1 <2e-16 ***
+Residuals               59966 684316    11.4                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+15 observations deleted due to missingness
+
+$statistical_tests$wait_time_anova
+                           Df Sum Sq Mean Sq F value Pr(>F)    
+recommendation_strategy     2   7612    3806    1559 <2e-16 ***
+Residuals               59981 146380       2                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+$statistical_tests$rating_anova
+                           Df Sum Sq Mean Sq F value Pr(>F)    
+recommendation_strategy     2   49.3  24.638    1765 <2e-16 ***
+Residuals               59981  837.2   0.014                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+$statistical_tests$fare_tukey
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = total_fare_estimate ~ recommendation_strategy, data = data)
+
+$recommendation_strategy
+                                diff         lwr        upr     p adj
+rating_first-price_first 0.673225386  0.59399396 0.75245682 0.0000000
+time_first-price_first   0.676054219  0.59709228 0.75501616 0.0000000
+time_first-rating_first  0.002828833 -0.07656777 0.08222544 0.9961631
+
+
+$statistical_tests$wait_time_tukey
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = wait_time_estimate_min ~ recommendation_strategy, data = data)
+
+$recommendation_strategy
+                                diff         lwr         upr     p adj
+rating_first-price_first  0.01369982 -0.02293743  0.05033706 0.6552318
+time_first-price_first   -0.74844031 -0.78494975 -0.71193088 0.0000000
+time_first-rating_first  -0.76214013 -0.79885146 -0.72542880 0.0000000
+
+
+$statistical_tests$rating_tukey
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = driver_rating_shown ~ recommendation_strategy, data = data)
+
+$recommendation_strategy
+                                 diff          lwr          upr     p adj
+rating_first-price_first  0.061594885  0.058824202  0.064365568 0.0000000
+time_first-price_first    0.001244994 -0.001516023  0.004006012 0.5410049
+time_first-rating_first  -0.060349890 -0.063126176 -0.057573604 0.0000000
+
+
+$statistical_tests$power_analysis
+$statistical_tests$power_analysis$total_sample_size
+[1] 12733
+
+$statistical_tests$power_analysis$max_effect_size
+[1] 0.1
+
+$statistical_tests$power_analysis$chi_square_power
+
+     Chi squared power calculation 
+
+              w = 0.1
+              N = 12733
+             df = 2
+      sig.level = 0.05
+          power = 1
+
+NOTE: N is the number of observations
+
+
+
+
+$algorithm_results
+$algorithm_results$epsilon_greedy
+$algorithm_results$epsilon_greedy$cumulative_reward
+[1] 11792
+
+$algorithm_results$epsilon_greedy$cumulative_regret
+time_first 
+  35.52957 
+
+$algorithm_results$epsilon_greedy$final_arm_means
+  time_first rating_first  price_first 
+   0.9297964    0.8903226    0.8631090 
+
+$algorithm_results$epsilon_greedy$arm_counts
+  time_first rating_first  price_first 
+       11837          465          431 
+
+$algorithm_results$epsilon_greedy$total_trials
+[1] 12733
+
+
+$algorithm_results$ucb1
+$algorithm_results$ucb1$cumulative_reward
+[1] 11582
+
+$algorithm_results$ucb1$cumulative_regret
+time_first 
+  208.3218 
+
+$algorithm_results$ucb1$final_arm_means
+  time_first rating_first  price_first 
+   0.9239030    0.8848921    0.8921118 
+
+$algorithm_results$ucb1$arm_counts
+  time_first rating_first  price_first 
+        7543         2363         2827 
+
+$algorithm_results$ucb1$total_trials
+[1] 12733
+
+
+$algorithm_results$thompson_sampling
+$algorithm_results$thompson_sampling$cumulative_reward
+[1] 11843
+
+$algorithm_results$thompson_sampling$cumulative_regret
+time_first 
+  9.938173 
+
+$algorithm_results$thompson_sampling$final_arm_means
+  time_first rating_first  price_first 
+   0.9314299    0.8727273    0.8000000 
+
+$algorithm_results$thompson_sampling$alpha
+  time_first rating_first  price_first 
+       11614          192           40 
+
+$algorithm_results$thompson_sampling$beta
+  time_first rating_first  price_first 
+         855           28           10 
+
+$algorithm_results$thompson_sampling$total_trials
+[1] 12733
+
+
+$algorithm_results$random
+$algorithm_results$random$cumulative_reward
+[1] 11513
+
+$algorithm_results$random$cumulative_regret
+rating_first 
+    335.2297 
+
+$algorithm_results$random$total_trials
+[1] 12733
+
+
+
+$plots
+$plots$completion_rates
+
+$plots$regret_analysis
+
+$plots$sample_sizes
+
+$plots$revenue_performance
+
+$plots$algorithm_comparison
+
+$plots$algorithm_regret
+
+$plots$dashboard
+
+
+$report_file
+[1] "results/reports/multi_armed_bandit_report.txt"
+

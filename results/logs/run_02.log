@@ -1,0 +1,437 @@
+i Running as script
+
+-- Starting Ride-hailing Data Analysis Pipeline --------------------------------
+
+-- Loading cleaned data --
+
+v Loaded 59984 rows, 43 columns
+
+-- Generating descriptive statistics --
+
+v Descriptive statistics generated
+
+-- Creating visualizations --
+
+v Visualizations created and saved to plots/ directory
+
+-- Analyzing correlations --
+
+v Correlation analysis completed
+
+-- Analyzing A/B test results --
+
+v A/B test analysis completed
+
+-- Generating business insights --
+
+v Business insights generated
+
+-- Generating analysis report --
+
+Generated: 2026-11-02 10:08:55.433241 
+
+v Analysis report generated: results/reports/analysis_report.txt
+
+-- Data Analysis Pipeline Completed Successfully -------------------------------
+v All analysis components completed
+i Check plots/ directory for visualizations
+i Check reports/ directory for analysis report
+
+-- Analysis Pipeline Completed Successfully ------------------------------------
+v All analysis components completed
+Warning messages:
+1: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+i Please use `linewidth` instead. 
+2: Removed 15 rows containing non-finite values (`stat_bin()`). 
+3: Removed 15 rows containing non-finite values (`stat_bin()`). 
+4: In write.table(stats$strategy_performance, file = report_file, append = TRUE,  :
+  appending column names to file
+$data
+# A tibble: 59,984 x 43
+   user_id session_id region operating_system recommendation_strategy
+     <dbl>      <dbl> <fct>  <fct>            <fct>                  
+ 1  110665          1 Berlin Android          price_first            
+ 2  101059          2 London Android          price_first            
+ 3  104018          3 London iOS              price_first            
+ 4  105865          4 Paris  iOS              price_first            
+ 5  112020          5 London Android          rating_first           
+ 6  113847          6 London Android          rating_first           
+ 7  114600          7 London Android          rating_first           
+ 8  100361          8 Paris  iOS              price_first            
+ 9  119423          9 London iOS              time_first             
+10  119596         10 Berlin iOS              time_first             
+# i 59,974 more rows
+# i 38 more variables: session_timestamp <chr>, weather_index <dbl>,
+#   event_peak <dbl>, city_density <dbl>, fare_estimate <dbl>,
+#   surge_multiplier <dbl>, wait_time_estimate_min <dbl>,
+#   driver_rating_shown <dbl>, options_viewed_count <dbl>,
+#   pct_offer_inspection <dbl>, promo_impressions <dbl>,
+#   app_errors_count <dbl>, ride_requested <dbl>, ride_completed <dbl>, ...
+
+$statistics
+$statistics$dataset_info
+$statistics$dataset_info$total_rows
+[1] 59984
+
+$statistics$dataset_info$total_columns
+[1] 43
+
+$statistics$dataset_info$date_range
+[1] "2025-02-01 to 2025-04-30"
+
+$statistics$dataset_info$unique_users
+[1] 19006
+
+$statistics$dataset_info$unique_sessions
+[1] 59974
+
+
+$statistics$regional_distribution
+# A tibble: 3 x 3
+  region sessions percentage
+  <fct>     <int>      <dbl>
+1 Berlin    12105       20.2
+2 London    36076       60.1
+3 Paris     11803       19.7
+
+$statistics$conversion_metrics
+# A tibble: 1 x 7
+  total_sessions total_requests total_completions total_cancellations
+           <int>          <dbl>             <dbl>               <dbl>
+1          59984          12733             11495                  28
+# i 3 more variables: request_rate <dbl>, completion_rate <dbl>,
+#   cancellation_rate <dbl>
+
+$statistics$pricing_summary
+# A tibble: 1 x 6
+  avg_fare_estimate median_fare_estimate avg_surge_multiplier surge_pricing_rate
+              <dbl>                <dbl>                <dbl>              <dbl>
+1              9.02                  8.7                 1.11               30.9
+# i 2 more variables: avg_wait_time_estimate <dbl>, avg_wait_time_actual <dbl>
+
+$statistics$strategy_performance
+# A tibble: 3 x 6
+  recommendation_strategy sessions request_rate completion_rate avg_fare
+  <fct>                      <int>        <dbl>           <dbl>    <dbl>
+1 price_first                20196         22.4            88.6     8.61
+2 rating_first               19756         20.5            89.4     9.23
+3 time_first                 20032         20.7            93.0     9.21
+# i 1 more variable: avg_wait_time <dbl>
+
+
+$plots
+$plots$regional_dist
+
+$plots$strategy_perf
+
+$plots$fare_dist
+
+$plots$surge_pricing
+
+$plots$wait_accuracy
+
+$plots$hourly_patterns
+
+$plots$dashboard
+
+
+$correlations
+$correlations$correlation_matrix
+                       weather_index    event_peak city_density fare_estimate
+weather_index           1.000000e+00  0.0003265163 -0.006721452   0.001085773
+event_peak              3.265163e-04  1.0000000000  0.004293263   0.003397753
+city_density           -6.721452e-03  0.0042932629  1.000000000   0.009614333
+fare_estimate           1.085773e-03  0.0033977525  0.009614333   1.000000000
+surge_multiplier       -1.838291e-02  0.0967889475 -0.004310861  -0.008066217
+wait_time_estimate_min  6.716416e-05  0.0058197964  0.010683180   0.001338592
+driver_rating_shown     3.357392e-03 -0.0025197288 -0.010681014   0.012373134
+options_viewed_count    9.228370e-03 -0.0110206910 -0.001946689  -0.006152039
+pct_offer_inspection    1.473902e-02  0.0092729433  0.010153943  -0.003377809
+promo_impressions       2.147677e-02  0.0099632907 -0.005884858  -0.003725933
+app_errors_count        1.569817e-02 -0.0058781938  0.001904968  -0.006270460
+cancel_after_request   -2.299076e-03 -0.0061854039 -0.007221815  -0.013840808
+wait_time_actual_min    4.160546e-04  0.0014691513  0.013209785  -0.008648683
+session_hour            4.081046e-03 -0.0012940491  0.009004861  -0.011531993
+session_quarter         4.125728e-03  0.0140315153  0.003011419  -0.012060179
+total_fare_estimate    -1.014380e-02  0.0673286029  0.001409556   0.723104040
+fare_per_minute        -6.260029e-03  0.0409751536 -0.007700918   0.510686174
+conversion_rate         1.702265e-03 -0.0087924777 -0.001647655   0.012318985
+cancellation_rate      -2.299076e-03 -0.0061854039 -0.007221815  -0.013840808
+wait_time_difference    6.082190e-04 -0.0053867799  0.007770721  -0.016334193
+wait_time_accuracy      4.144830e-03 -0.0026055260 -0.011903409  -0.008082616
+options_engagement     -3.179026e-04 -0.0117555684  0.003802297   0.006070116
+                       surge_multiplier wait_time_estimate_min
+weather_index             -0.0183829123           6.716416e-05
+event_peak                 0.0967889475           5.819796e-03
+city_density              -0.0043108606           1.068318e-02
+fare_estimate             -0.0080662171           1.338592e-03
+surge_multiplier           1.0000000000          -5.971722e-03
+wait_time_estimate_min    -0.0059717224           1.000000e+00
+driver_rating_shown       -0.0080328984           2.074827e-02
+options_viewed_count       0.0024159842          -8.190239e-03
+pct_offer_inspection      -0.0001242586           5.899561e-03
+promo_impressions          0.0137806368           5.679776e-04
+app_errors_count           0.0097396607          -2.278075e-03
+cancel_after_request       0.0003141125           2.490291e-03
+wait_time_actual_min      -0.0021987697           8.034826e-01
+session_hour               0.0105141584          -7.859159e-04
+session_quarter           -0.0100771241          -1.388535e-03
+total_fare_estimate        0.6659861522          -2.758598e-03
+fare_per_minute            0.4712215772          -6.359077e-01
+conversion_rate           -0.0049130779          -2.766927e-02
+cancellation_rate          0.0003141125           2.490291e-03
+wait_time_difference       0.0043662508           1.480319e-05
+wait_time_accuracy        -0.0091646732          -3.523076e-01
+options_engagement        -0.0028840574          -8.865299e-03
+                       driver_rating_shown options_viewed_count
+weather_index                  0.003357392         0.0092283695
+event_peak                    -0.002519729        -0.0110206910
+city_density                  -0.010681014        -0.0019466891
+fare_estimate                  0.012373134        -0.0061520385
+surge_multiplier              -0.008032898         0.0024159842
+wait_time_estimate_min         0.020748269        -0.0081902391
+driver_rating_shown            1.000000000        -0.0032057740
+options_viewed_count          -0.003205774         1.0000000000
+pct_offer_inspection           0.004621414        -0.0104288796
+promo_impressions             -0.010931193        -0.0010296191
+app_errors_count              -0.009096865        -0.0100744094
+cancel_after_request           0.015184091        -0.0059829245
+wait_time_actual_min           0.022249388        -0.0004411065
+session_hour                   0.001990651        -0.0002384199
+session_quarter               -0.007158145         0.0052072303
+total_fare_estimate            0.002720406        -0.0030519850
+fare_per_minute               -0.012863192         0.0074078644
+conversion_rate               -0.012909636        -0.0065706865
+cancellation_rate              0.015184091        -0.0059829245
+wait_time_difference           0.009370792         0.0103128575
+wait_time_accuracy            -0.017069839         0.0085106703
+options_engagement             0.006668672         0.8162866212
+                       pct_offer_inspection promo_impressions app_errors_count
+weather_index                  0.0147390216      0.0214767744     0.0156981708
+event_peak                     0.0092729433      0.0099632907    -0.0058781938
+city_density                   0.0101539426     -0.0058848577     0.0019049676
+fare_estimate                 -0.0033778088     -0.0037259330    -0.0062704595
+surge_multiplier              -0.0001242586      0.0137806368     0.0097396607
+wait_time_estimate_min         0.0058995614      0.0005679776    -0.0022780751
+driver_rating_shown            0.0046214140     -0.0109311927    -0.0090968652
+options_viewed_count          -0.0104288796     -0.0010296191    -0.0100744094
+pct_offer_inspection           1.0000000000     -0.0050487827    -0.0103527319
+promo_impressions             -0.0050487827      1.0000000000    -0.0091262476
+app_errors_count              -0.0103527319     -0.0091262476     1.0000000000
+cancel_after_request           0.0058529257      0.0035143969    -0.0018374561
+wait_time_actual_min          -0.0054775011      0.0003407250     0.0020399679
+session_hour                  -0.0022763064      0.0116699979     0.0067763418
+session_quarter               -0.0018058513      0.0042784656    -0.0047691065
+total_fare_estimate           -0.0029386830      0.0068739369     0.0023142852
+fare_per_minute               -0.0087749557      0.0059808338    -0.0011670980
+conversion_rate               -0.0227744517     -0.0099478842    -0.0013443241
+cancellation_rate              0.0058529257      0.0035143969    -0.0018374561
+wait_time_difference          -0.0171630415     -0.0001942292     0.0065011888
+wait_time_accuracy            -0.0051351955     -0.0091307878    -0.0009527795
+options_engagement            -0.0086912487     -0.4491461061    -0.0063649154
+                       cancel_after_request wait_time_actual_min  session_hour
+weather_index                 -0.0022990764         0.0004160546  0.0040810460
+event_peak                    -0.0061854039         0.0014691513 -0.0012940491
+city_density                  -0.0072218151         0.0132097847  0.0090048606
+fare_estimate                 -0.0138408079        -0.0086486833 -0.0115319934
+surge_multiplier               0.0003141125        -0.0021987697  0.0105141584
+wait_time_estimate_min         0.0024902911         0.8034825731 -0.0007859159
+driver_rating_shown            0.0151840912         0.0222493875  0.0019906509
+options_viewed_count          -0.0059829245        -0.0004411065 -0.0002384199
+pct_offer_inspection           0.0058529257        -0.0054775011 -0.0022763064
+promo_impressions              0.0035143969         0.0003407250  0.0116699979
+app_errors_count              -0.0018374561         0.0020399679  0.0067763418
+cancel_after_request           1.0000000000        -0.0009783241  0.0083442618
+wait_time_actual_min          -0.0009783241         1.0000000000  0.0001418952
+session_hour                   0.0083442618         0.0001418952  1.0000000000
+session_quarter               -0.0050967590        -0.0021599688 -0.0021395703
+total_fare_estimate           -0.0104669334        -0.0060840904 -0.0012608938
+fare_per_minute               -0.0074957237        -0.5165235192  0.0008266819
+conversion_rate               -0.1430469649        -0.0179656923 -0.0077649035
+cancellation_rate              1.0000000000        -0.0009783241  0.0083442618
+wait_time_difference          -0.0050043107         0.5953401688  0.0012990447
+wait_time_accuracy             0.0016543870        -0.0401212701  0.0047968259
+options_engagement            -0.0049899330        -0.0004181367 -0.0073131253
+                       session_quarter total_fare_estimate fare_per_minute
+weather_index              0.004125728        -0.010143804   -0.0062600286
+event_peak                 0.014031515         0.067328603    0.0409751536
+city_density               0.003011419         0.001409556   -0.0077009175
+fare_estimate             -0.012060179         0.723104040    0.5106861743
+surge_multiplier          -0.010077124         0.665986152    0.4712215772
+wait_time_estimate_min    -0.001388535        -0.002758598   -0.6359077449
+driver_rating_shown       -0.007158145         0.002720406   -0.0128631920
+options_viewed_count       0.005207230        -0.003051985    0.0074078644
+pct_offer_inspection      -0.001805851        -0.002938683   -0.0087749557
+promo_impressions          0.004278466         0.006873937    0.0059808338
+app_errors_count          -0.004769106         0.002314285   -0.0011670980
+cancel_after_request      -0.005096759        -0.010466933   -0.0074957237
+wait_time_actual_min      -0.002159969        -0.006084090   -0.5165235192
+session_hour              -0.002139570        -0.001260894    0.0008266819
+session_quarter            1.000000000        -0.015271422   -0.0088940382
+total_fare_estimate       -0.015271422         1.000000000    0.7048849267
+fare_per_minute           -0.008894038         0.704884927    1.0000000000
+conversion_rate            0.005742324         0.005674448    0.0194798254
+cancellation_rate         -0.005096759        -0.010466933   -0.0074957237
+wait_time_difference      -0.001754187        -0.006496633   -0.0093869759
+wait_time_accuracy        -0.013602604        -0.010414896    0.2390171867
+options_engagement         0.000108023         0.001150560    0.0095871744
+                       conversion_rate cancellation_rate wait_time_difference
+weather_index              0.001702265     -0.0022990764         6.082190e-04
+event_peak                -0.008792478     -0.0061854039        -5.386780e-03
+city_density              -0.001647655     -0.0072218151         7.770721e-03
+fare_estimate              0.012318985     -0.0138408079        -1.633419e-02
+surge_multiplier          -0.004913078      0.0003141125         4.366251e-03
+wait_time_estimate_min    -0.027669270      0.0024902911         1.480319e-05
+driver_rating_shown       -0.012909636      0.0151840912         9.370792e-03
+options_viewed_count      -0.006570687     -0.0059829245         1.031286e-02
+pct_offer_inspection      -0.022774452      0.0058529257        -1.716304e-02
+promo_impressions         -0.009947884      0.0035143969        -1.942292e-04
+app_errors_count          -0.001344324     -0.0018374561         6.501189e-03
+cancel_after_request      -0.143046965      1.0000000000        -5.004311e-03
+wait_time_actual_min      -0.017965692     -0.0009783241         5.953402e-01
+session_hour              -0.007764904      0.0083442618         1.299045e-03
+session_quarter            0.005742324     -0.0050967590        -1.754187e-03
+total_fare_estimate        0.005674448     -0.0104669334        -6.496633e-03
+fare_per_minute            0.019479825     -0.0074957237        -9.386976e-03
+conversion_rate            1.000000000     -0.1430469649         7.165526e-03
+cancellation_rate         -0.143046965      1.0000000000        -5.004311e-03
+wait_time_difference       0.007165526     -0.0050043107         1.000000e+00
+wait_time_accuracy        -0.000664788      0.0016543870         4.080919e-01
+options_engagement        -0.001272706     -0.0049899330         1.126252e-02
+                       wait_time_accuracy options_engagement
+weather_index                0.0041448302      -0.0003179026
+event_peak                  -0.0026055260      -0.0117555684
+city_density                -0.0119034090       0.0038022969
+fare_estimate               -0.0080826161       0.0060701162
+surge_multiplier            -0.0091646732      -0.0028840574
+wait_time_estimate_min      -0.3523076378      -0.0088652985
+driver_rating_shown         -0.0170698387       0.0066686721
+options_viewed_count         0.0085106703       0.8162866212
+pct_offer_inspection        -0.0051351955      -0.0086912487
+promo_impressions           -0.0091307878      -0.4491461061
+app_errors_count            -0.0009527795      -0.0063649154
+cancel_after_request         0.0016543870      -0.0049899330
+wait_time_actual_min        -0.0401212701      -0.0004181367
+session_hour                 0.0047968259      -0.0073131253
+session_quarter             -0.0136026036       0.0001080230
+total_fare_estimate         -0.0104148964       0.0011505605
+fare_per_minute              0.2390171867       0.0095871744
+conversion_rate             -0.0006647880      -0.0012727061
+cancellation_rate            0.0016543870      -0.0049899330
+wait_time_difference         0.4080919431       0.0112625224
+wait_time_accuracy           1.0000000000       0.0173578848
+options_engagement           0.0173578848       1.0000000000
+
+$correlations$numeric_variables
+ [1] "weather_index"          "event_peak"             "city_density"          
+ [4] "fare_estimate"          "surge_multiplier"       "wait_time_estimate_min"
+ [7] "driver_rating_shown"    "options_viewed_count"   "pct_offer_inspection"  
+[10] "promo_impressions"      "app_errors_count"       "cancel_after_request"  
+[13] "wait_time_actual_min"   "session_hour"           "session_quarter"       
+[16] "total_fare_estimate"    "fare_per_minute"        "conversion_rate"       
+[19] "cancellation_rate"      "wait_time_difference"   "wait_time_accuracy"    
+[22] "options_engagement"    
+
+
+$ab_test_results
+$ab_test_results$strategy_summary
+# A tibble: 3 x 8
+  recommendation_strategy sessions requests completions request_rate
+  <fct>                      <int>    <dbl>       <dbl>        <dbl>
+1 price_first                20196     4522        4007        0.224
+2 rating_first               19756     4056        3625        0.205
+3 time_first                 20032     4155        3863        0.207
+# i 3 more variables: completion_rate <dbl>, avg_fare <dbl>,
+#   avg_wait_time <dbl>
+
+$ab_test_results$chi_square_test
+
+	Pearson's Chi-squared test
+
+data:  contingency_table
+X-squared = 24.905, df = 2, p-value = 3.909e-06
+
+
+$ab_test_results$fare_anova
+                           Df Sum Sq Mean Sq F value Pr(>F)    
+recommendation_strategy     2   4982  2491.1   508.1 <2e-16 ***
+Residuals               59966 293997     4.9                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+15 observations deleted due to missingness
+
+$ab_test_results$wait_time_anova
+                           Df Sum Sq Mean Sq F value Pr(>F)    
+recommendation_strategy     2   7612    3806    1559 <2e-16 ***
+Residuals               59981 146380       2                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+$insights
+$insights$top_strategy
+$insights$top_strategy$strategy
+[1] time_first
+Levels: price_first rating_first time_first
+
+$insights$top_strategy$completion_rate
+[1] 92.97
+
+$insights$top_strategy$sessions
+[1] 20032
+
+
+$insights$regional_insights
+# A tibble: 3 x 6
+  region sessions request_rate completion_rate avg_fare surge_rate
+  <fct>     <int>        <dbl>           <dbl>    <dbl>      <dbl>
+1 London    36076         21.2            90.3     9.02       31.0
+2 Berlin    12105         21.0            90.2     8.99       30.7
+3 Paris     11803         21.5            90.2     9.04       31.0
+
+$insights$time_optimization
+# A tibble: 24 x 5
+   session_hour sessions request_rate avg_wait_time surge_rate
+          <dbl>    <int>        <dbl>         <dbl>      <dbl>
+ 1           19     4001         23.4          5.79       30.5
+ 2           17     4522         23.0          5.75       30.6
+ 3           18     4619         22.9          5.72       31.5
+ 4            8     4492         22.8          5.75       31.1
+ 5            7     4122         22.3          5.81       31.0
+ 6            5     1162         22.2          5.80       32.3
+ 7            9     3520         22.0          5.71       30.9
+ 8           12     2988         21.1          5.75       30.2
+ 9           15     2971         21.0          5.77       31.5
+10           14     2352         20.9          5.73       31.0
+# i 14 more rows
+
+$insights$user_segments
+# A tibble: 4 x 5
+  user_age_group sessions request_rate completion_rate avg_fare
+  <fct>             <int>        <dbl>           <dbl>    <dbl>
+1 18-24             14948         21.4            90.7     9.04
+2 35-49             14842         21.2            90.5     9.02
+3 25-34             21192         21.2            90.2     9.01
+4 50+                9002         21.2            89.4     8.99
+
+$insights$recommendations
+$insights$recommendations$strategy_optimization
+Consider focusing on time_first strategy which shows 93% completion rate
+
+$insights$recommendations$regional_focus
+Region London shows highest completion rate at 90.3%
+
+$insights$recommendations$time_optimization
+Peak request hours are 19, 17, 18 with request rates above 23.1%
+
+$insights$recommendations$user_targeting
+Age group 18-24 shows highest completion rate at 90.7%
+
+
+
+$report_file
+[1] "results/reports/analysis_report.txt"
+
+Warning messages:
+1: Removed 15 rows containing non-finite values (`stat_bin()`). 
+2: Removed 15 rows containing non-finite values (`stat_bin()`). 

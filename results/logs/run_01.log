@@ -1,0 +1,90 @@
+Warning: `recursive` is deprecated, please use `recurse` instead
+Warning: `recursive` is deprecated, please use `recurse` instead
+i Running as script
+
+-- Starting Ride-hailing Data Cleaning Pipeline --------------------------------
+
+-- Loading raw data --
+
+v Loaded 60000 rows, 23 columns
+
+-- Validating data structure --
+
+! Found 10 duplicate session IDs
+v Data structure validation completed
+
+-- Creating derived features --
+
+-- Handling missing values --
+
+-- Cleaning numeric variables --
+
+-- Cleaning categorical variables --
+
+-- Cleaning timestamp data --
+
+i Parsed 60000 timestamps successfully
+v Categorical variables cleaned and standardized
+v Numeric variables cleaned and outliers handled
+i Missing values found:
+# A tibble: 4 x 3
+  variable             missing_count missing_pct
+  <chr>                        <int>       <dbl>
+1 ride_completed               47263       78.8 
+2 wait_time_actual_min         47263       78.8 
+3 region                          16        0.03
+4 fare_estimate                   15        0.03
+! Removed 16 rows with missing critical variables
+v Derived features created successfully
+
+-- Validating data structure --
+
+! Found 10 duplicate session IDs
+v Data structure validation completed
+
+-- Final Data Summary --
+
+v Final dataset: 59984 rows, 43 columns
+i Date range: 2025-02-01 to 2025-04-30
+
+-- Exporting cleaned data --
+
+v Exported cleaned data to data/processed/sessions_clean.csv
+Generated: 2026-11-02 10:08:48.215274 
+
+Dataset Dimensions: 59984 rows x 43 columns
+
+=== Variable Summary ===
+v Data summary exported to results/data_summary.txt
+
+-- Data Cleaning Pipeline Completed Successfully -------------------------------
+v Cleaned data ready for analysis
+Warning messages:
+1: There were 4 warnings in `mutate()`.
+The first warning was:
+i In argument: `timestamp_parsed = case_when(...)`.
+Caused by warning:
+!  17881 failed to parse.
+i Run `dplyr::last_dplyr_warnings()` to see the 3 remaining warnings. 
+2: In write.table(missing_summary, file = log_file, append = TRUE,  :
+  appending column names to file
+# A tibble: 59,984 x 43
+   user_id session_id region operating_system recommendation_strategy
+     <int>      <int> <fct>  <fct>            <fct>                  
+ 1  110665          1 Berlin Android          price_first            
+ 2  101059          2 London Android          price_first            
+ 3  104018          3 London iOS              price_first            
+ 4  105865          4 Paris  iOS              price_first            
+ 5  112020          5 London Android          rating_first           
+ 6  113847          6 London Android          rating_first           
+ 7  114600          7 London Android          rating_first           
+ 8  100361          8 Paris  iOS              price_first            
+ 9  119423          9 London iOS              time_first             
+10  119596         10 Berlin iOS              time_first             
+# i 59,974 more rows
+# i 38 more variables: session_timestamp <chr>, weather_index <dbl>,
+#   event_peak <int>, city_density <dbl>, fare_estimate <dbl>,
+#   surge_multiplier <dbl>, wait_time_estimate_min <int>,
+#   driver_rating_shown <dbl>, options_viewed_count <int>,
+#   pct_offer_inspection <int>, promo_impressions <int>,
+#   app_errors_count <int>, ride_requested <int>, ride_completed <int>, ...

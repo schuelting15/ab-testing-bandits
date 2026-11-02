@@ -1,0 +1,96 @@
+=== Ride-hailing Data Summary ===
+    user_id         session_id    weather_index      event_peak     
+ Min.   :100000   Min.   :    1   Min.   :0.0000   Min.   :0.00000  
+ 1st Qu.:105012   1st Qu.:15000   1st Qu.:0.2510   1st Qu.:0.00000  
+ Median :109970   Median :30000   Median :0.5000   Median :0.00000  
+ Mean   :110001   Mean   :30000   Mean   :0.4995   Mean   :0.07037  
+ 3rd Qu.:115002   3rd Qu.:44998   3rd Qu.:0.7480   3rd Qu.:0.00000  
+ Max.   :119999   Max.   :60000   Max.   :1.0000   Max.   :1.00000  
+                                                                    
+  city_density   fare_estimate    surge_multiplier wait_time_estimate_min
+ Min.   :-5023   Min.   : 6.000   Min.   :1.00     Min.   : 3.000        
+ 1st Qu.: 4530   1st Qu.: 7.300   1st Qu.:1.00     1st Qu.: 5.000        
+ Median : 4530   Median : 8.700   Median :1.00     Median : 6.000        
+ Mean   : 4537   Mean   : 9.018   Mean   :1.11     Mean   : 5.756        
+ 3rd Qu.: 4530   3rd Qu.:10.300   3rd Qu.:1.08     3rd Qu.: 7.000        
+ Max.   : 5023   Max.   :23.300   Max.   :2.80     Max.   :11.000        
+                 NA's   :15                                              
+ driver_rating_shown options_viewed_count pct_offer_inspection
+ Min.   :4.250       Min.   : 0.000       Min.   :  0.00      
+ 1st Qu.:4.660       1st Qu.: 2.000       1st Qu.: 25.00      
+ Median :4.740       Median : 3.000       Median : 50.00      
+ Mean   :4.739       Mean   : 2.799       Mean   : 49.87      
+ 3rd Qu.:4.820       3rd Qu.: 4.000       3rd Qu.: 75.00      
+ Max.   :5.000       Max.   :10.000       Max.   :100.00      
+                                                              
+ promo_impressions app_errors_count  ride_requested   ride_completed 
+ Min.   :0.000     Min.   :  0.000   Min.   :0.0000   Min.   :0.0    
+ 1st Qu.:0.000     1st Qu.:  0.000   1st Qu.:0.0000   1st Qu.:1.0    
+ Median :1.000     Median :  1.000   Median :0.0000   Median :1.0    
+ Mean   :1.297     Mean   :  1.293   Mean   :0.2123   Mean   :0.9    
+ 3rd Qu.:2.000     3rd Qu.:  2.000   3rd Qu.:0.0000   3rd Qu.:1.0    
+ Max.   :9.000     Max.   :198.000   Max.   :1.0000   Max.   :1.0    
+                                                      NA's   :47251  
+ cancel_after_request wait_time_actual_min  session_hour   session_quarter
+ Min.   :0.0000000    Min.   : 1.00        Min.   : 0.00   Min.   :1.000  
+ 1st Qu.:0.0000000    1st Qu.: 4.80        1st Qu.: 8.00   1st Qu.:1.000  
+ Median :0.0000000    Median : 6.20        Median :14.00   Median :1.000  
+ Mean   :0.0004668    Mean   : 6.22        Mean   :13.41   Mean   :1.339  
+ 3rd Qu.:0.0000000    3rd Qu.: 7.60        3rd Qu.:18.00   3rd Qu.:2.000  
+ Max.   :1.0000000    Max.   :14.40        Max.   :23.00   Max.   :2.000  
+                      NA's   :47251                                       
+ total_fare_estimate fare_per_minute   conversion_rate cancellation_rate  
+ Min.   : 6.00       Min.   : 0.5455   Min.   :0.0     Min.   :0.0000000  
+ 1st Qu.: 7.70       1st Qu.: 1.2775   1st Qu.:1.0     1st Qu.:0.0000000  
+ Median : 9.30       Median : 1.6750   Median :1.0     Median :0.0000000  
+ Mean   :10.01       Mean   : 1.8974   Mean   :0.9     Mean   :0.0004668  
+ 3rd Qu.:11.40       3rd Qu.: 2.2600   3rd Qu.:1.0     3rd Qu.:0.0000000  
+ Max.   :45.64       Max.   :14.5040   Max.   :1.0     Max.   :1.0000000  
+ NA's   :15          NA's   :15        NA's   :47251                      
+ wait_time_difference wait_time_accuracy options_engagement
+ Min.   :-4.10        Min.   :0.00       Min.   : 0.000    
+ 1st Qu.:-0.40        1st Qu.:0.07       1st Qu.: 1.000    
+ Median : 0.50        Median :0.15       Median : 2.000    
+ Mean   : 0.45        Mean   :0.19       Mean   : 2.201    
+ 3rd Qu.: 1.30        3rd Qu.:0.27       3rd Qu.: 3.000    
+ Max.   : 5.50        Max.   :1.47       Max.   :10.000    
+ NA's   :47251        NA's   :47251                        
+
+=== Categorical Variables ===
+
+ region :
+
+London Berlin  Paris 
+ 36076  12105  11803 
+
+ operating_system :
+
+Android     iOS 
+  31702   28282 
+
+ recommendation_strategy :
+
+ price_first rating_first   time_first 
+       20196        19756        20032 
+
+ user_age_group :
+
+18-24 25-34 35-49   50+ 
+14948 21192 14842  9002 
+
+ primary_route_type :
+
+    commute     airport   nightlife city_center 
+      24087        8845        9006       18046 
+
+ session_weekday :
+
+   Sunday    Monday   Tuesday Wednesday  Thursday    Friday  Saturday 
+     8782      8682      8782      8702      8161      8145      8730 
+
+ session_month :
+
+  January  February     March     April       May      June      July    August 
+        0     18852     20809     20323         0         0         0         0 
+September   October  November  December 
+        0         0         0         0 

@@ -1,0 +1,26 @@
+=== RIDE-HAILING DATA ANALYSIS REPORT ===
+## DATASET OVERVIEW
+Total Sessions: 59984 
+Unique Users: 19006 
+Date Range: 2025-02-01 to 2025-04-30 
+
+## CONVERSION METRICS
+Request Rate: 21.23 %
+Completion Rate: 90.28 %
+Cancellation Rate: 0.22 %
+
+## RECOMMENDATION STRATEGY PERFORMANCE
+"recommendation_strategy"	"sessions"	"request_rate"	"completion_rate"	"avg_fare"	"avg_wait_time"
+"price_first"	20196	22.39	88.61	8.61	6
+"rating_first"	19756	20.53	89.37	9.23	6.02
+"time_first"	20032	20.74	92.97	9.21	5.25
+
+## KEY INSIGHTS & RECOMMENDATIONS
+strategy_optimization : Consider focusing on time_first strategy which shows 93% completion rate 
+regional_focus : Region London shows highest completion rate at 90.3% 
+time_optimization : Peak request hours are 19, 17, 18 with request rates above 23.1% 
+user_targeting : Age group 18-24 shows highest completion rate at 90.7% 
+
+## STATISTICAL SIGNIFICANCE
+Chi-square test p-value: 3.908868e-06 
+Result: Statistically significant differences between strategies

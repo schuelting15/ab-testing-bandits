@@ -1,0 +1,16 @@
+=== Data Cleaning Started ===
+Timestamp: 2026-11-02 10:08:44.978014 
+Raw data loaded: 60000 rows
+Duplicate sessions: 10 
+Missing values summary:
+"variable"	"missing_count"	"missing_pct"
+"ride_completed"	47263	78.77
+"wait_time_actual_min"	47263	78.77
+"region"	16	0.03
+"fare_estimate"	15	0.03
+Rows removed due to missing critical variables: 16 
+Duplicate sessions: 10 
+Final dataset: 59984 rows, 43 columns
+Date range: 2025-02-01 to 2025-04-30 
+=== Pipeline Completed Successfully ===
+Final timestamp: 2026-11-02 10:08:48.37374 
